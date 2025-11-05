@@ -1,0 +1,15 @@
+<Tab text="Transactions">
+    <AnchorPane>
+        <children>
+            <TableView fx:id="tblTransactions" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+                <columns>
+                    <TableColumn fx:id="colSymbol" text="Symbol" prefWidth="100"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                    <TableColumn fx:id="colQty" text="Quantity" prefWidth="100"/>
+                    <TableColumn fx:id="colPrice" text="Price" prefWidth="120"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="180"/>
+                </columns>
+            </TableView>
+        </children>
+    </AnchorPane>
+</Tab>

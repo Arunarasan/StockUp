@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.controllers.DashboardController"
+            prefWidth="1200" prefHeight="700"
+            stylesheets="@../styles/app.css"
+            styleClass="root">
+            
+     <!-- 🏦 Header Bar -->
+				<top>
+				    <HBox spacing="20" alignment="CENTER_RIGHT" style="-fx-padding: 10; -fx-background-color: #1e1e1e;">
+				        <children>
+				            <Label text="Available Balance:" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+				            <Label fx:id="lblBalance" text="₹0.00" style="-fx-text-fill: lightgreen; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+				        </children>
+				    </HBox>
+				</top>
+
+    <!-- 🧭 Sidebar -->
+    <left>
+        <VBox spacing="12" alignment="TOP_CENTER" prefWidth="210" styleClass="sidebar">
+            <children>
+                <Label text="📈 StockFX" styleClass="sidebar-title"/>
+                <Button text="🏠 Home" styleClass="sidebar-btn"/>
+                <Button text="💹 Market" styleClass="sidebar-btn"/>
+                <Button text="💼 Portfolio" styleClass="sidebar-btn"/>
+                <Button text="🕒 Transactions" styleClass="sidebar-btn"/>
+                <Button text="⭐ Watchlist" styleClass="sidebar-btn"/>
+                <Button text="⚙ Settings" styleClass="sidebar-btn"/>
+            </children>
+            <padding>
+                <Insets top="18" left="12" bottom="18" right="12"/>
+            </padding>
+        </VBox>
+    </left>
+
+    <!-- 📊 Main Tabs -->
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+
+            <!-- 💹 Market Tab -->
+            <tabs>
+                <Tab text="Market">
+                    <AnchorPane>
+                        <children>
+                            <TextField fx:id="txtSearch"
+                                       promptText="🔍 Search symbol or company name"
+                                       AnchorPane.topAnchor="10"
+                                       AnchorPane.leftAnchor="10"
+                                       AnchorPane.rightAnchor="10"/>
+
+                            <TableView fx:id="tblMarket"
+                                       prefHeight="420"
+                                       AnchorPane.topAnchor="50"
+                                       AnchorPane.leftAnchor="10"
+                                       AnchorPane.rightAnchor="10"
+                                       AnchorPane.bottomAnchor="60">
+                                <columns>
+                                    <TableColumn fx:id="colSymbol" text="Symbol" prefWidth="120"/>
+                                    <TableColumn fx:id="colName" text="Company" prefWidth="250"/>
+                                    <TableColumn fx:id="colPrice" text="Price (₹)" prefWidth="120"/>
+                                </columns>
+                            </TableView>
+
+                            <HBox spacing="10" alignment="CENTER"
+                                  AnchorPane.bottomAnchor="10"
+                                  AnchorPane.leftAnchor="10"
+                                  AnchorPane.rightAnchor="10">
+                                <children>
+                                    <Button fx:id="btnBuy" text="💰 Buy" styleClass="primary-btn"/>
+                                    <Button fx:id="btnSell" text="📉 Sell" styleClass="danger-btn"/>
+                                    <Label fx:id="lblStatus" text="" style="-fx-text-fill: lightgray;"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- 💼 Portfolio Tab -->
+                <Tab text="Portfolio">
+                    <AnchorPane>
+                        <children>
+                            <TableView fx:id="tblPortfolio"
+                                       prefHeight="260"
+                                       AnchorPane.topAnchor="20"
+                                       AnchorPane.leftAnchor="10"
+                                       AnchorPane.rightAnchor="10">
+                                <columns>
+                                    <TableColumn fx:id="colPSymbol" text="Symbol" prefWidth="100"/>
+                                    <TableColumn fx:id="colPName" text="Company" prefWidth="200"/>
+                                    <TableColumn fx:id="colPQty" text="Qty" prefWidth="80"/>
+                                    <TableColumn fx:id="colPAvg" text="Avg Price" prefWidth="120"/>
+                                    <TableColumn fx:id="colPValue" text="Current Value" prefWidth="150"/>
+                                </columns>
+                            </TableView>
+
+                            <PieChart fx:id="pieChart"
+                                      prefHeight="250" prefWidth="400"
+                                      AnchorPane.topAnchor="300"
+                                      AnchorPane.leftAnchor="10"/>
+
+                            <LineChart fx:id="lineChart"
+                                       prefHeight="250" prefWidth="700"
+                                       AnchorPane.topAnchor="300"
+                                       AnchorPane.leftAnchor="430"
+                                       AnchorPane.rightAnchor="10">
+                                <xAxis>
+                                    <NumberAxis label="Time (s)"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Portfolio Value (₹)"/>
+                                </yAxis>
+                            </LineChart>
+                        </children>
+                    </AnchorPane>
+                </Tab>
+				
+								
+                <!-- 🕒 Transactions Tab -->
+                <Tab text="Transactions">
+                    <AnchorPane>
+                        <children>
+                            <TableView fx:id="tblTransactions"
+                                       AnchorPane.topAnchor="10"
+                                       AnchorPane.leftAnchor="10"
+                                       AnchorPane.rightAnchor="10"
+                                       AnchorPane.bottomAnchor="10">
+                                <columns>
+                                    <TableColumn fx:id="colTSymbol" text="Symbol" prefWidth="100"/>
+                                    <TableColumn fx:id="colTType" text="Type" prefWidth="100"/>
+                                    <TableColumn fx:id="colTQty" text="Quantity" prefWidth="100"/>
+                                    <TableColumn fx:id="colTPrice" text="Price" prefWidth="120"/>
+                                    <TableColumn fx:id="colTDate" text="Date" prefWidth="180"/>
+                                </columns>
+                            </TableView>
+                        </children>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- ⭐ Watchlist Tab -->
+				<Tab text="Watchlist">
+				    <AnchorPane>
+				        <children>
+				            <TableView fx:id="tblWatchlist"
+				                       AnchorPane.topAnchor="10"
+				                       AnchorPane.leftAnchor="10"
+				                       AnchorPane.rightAnchor="10"
+				                       AnchorPane.bottomAnchor="50">
+				                <columns>
+				                    <TableColumn fx:id="colWLSymbol" text="Symbol" prefWidth="150"/>
+				                    <TableColumn fx:id="colWLCompany" text="Company" prefWidth="250"/>
+				                    <TableColumn fx:id="colWLPrice" text="Live Price (₹)" prefWidth="150"/>
+				                </columns>
+				            </TableView>
+				
+				            <HBox spacing="10" alignment="CENTER"
+				                  AnchorPane.bottomAnchor="10"
+				                  AnchorPane.leftAnchor="10"
+				                  AnchorPane.rightAnchor="10">
+				                <children>
+				                    <Button fx:id="btnAddWatch" text="➕ Add to Watchlist" styleClass="primary-btn"/>
+				                    <Button fx:id="btnRemoveWatch" text="❌ Remove" styleClass="danger-btn"/>
+				                </children>
+				            </HBox>
+				        </children>
+				    </AnchorPane>
+				</Tab>
+
+                <!-- ⚙ Settings Tab -->
+                <Tab text="Settings">
+                    <AnchorPane>
+                        <children>
+                            <Label text="⚙ Application Settings"
+                                   AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20"/>
+                            <Button text="Logout"
+                                    fx:id="btnLogout"
+                                    AnchorPane.leftAnchor="20"
+                                    AnchorPane.topAnchor="60"
+                                    styleClass="danger-btn"/>
+                            <Button text="➕ Add Money"
+							        fx:id="btnAddMoney"
+							        AnchorPane.leftAnchor="120"
+							        AnchorPane.topAnchor="60"
+							        styleClass="primary-btn"/>
+                        </children>
+                    </AnchorPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

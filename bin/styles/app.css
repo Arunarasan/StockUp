@@ -1,0 +1,350 @@
+/* 🌙 Global Dark Theme */
+.root {
+    -fx-background-color: #0f141a;
+    -fx-font-family: "Segoe UI", "Poppins", sans-serif;
+    -fx-text-fill: #eaeaea;
+}
+
+/* === 🧭 Sidebar === */
+.sidebar {
+    -fx-background-color: #151a22;
+    -fx-padding: 15;
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: #2a2f38;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.2, 0, 2);
+}
+
+.sidebar-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #61dafb, #00c3ff);
+    -fx-padding: 10 0 20 0;
+}
+
+.sidebar-btn {
+    -fx-pref-width: 160;
+    -fx-font-size: 14px;
+    -fx-text-fill: #dcdcdc;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: #1e90ff44;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+}
+
+/* === 💰 Buttons === */
+.primary-btn {
+    -fx-background-color: linear-gradient(to right, #00b09b, #96c93d);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20 8 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}
+
+.primary-btn:hover {
+    -fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.danger-btn {
+    -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20 8 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}
+
+.danger-btn:hover {
+    -fx-background-color: linear-gradient(to right, #ff758c, #ff7eb3);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* === 🏦 Header === */
+.hbox {
+    -fx-background-color: #181d25;
+}
+
+.label {
+    -fx-text-fill: #eaeaea;
+}
+
+/* === 📋 Tables === */
+.table-view {
+    -fx-background-color: #181d25;
+    -fx-border-color: #222831;
+    -fx-table-cell-border-color: #2e3748;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.table-view .column-header {
+    -fx-background-color: #202631;
+    -fx-text-fill: #a8b8d1;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #1c222b;
+    -fx-text-fill: #e6e6e6;
+    -fx-font-size: 13px;
+    -fx-border-color: #252d3a;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #2b3647;
+}
+
+/* === 💹 Market Price Highlight === */
+.table-cell {
+    -fx-text-fill: #ffffff;
+}
+.table-cell:filled:selected {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: #ffffff;
+}
+
+/* === 🧾 Login Page === */
+.login-pane {
+    -fx-background-color: linear-gradient(to bottom right, #121820, #1b2432);
+    -fx-padding: 40;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0.3, 0, 2);
+}
+
+.login-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
+.login-field {
+    -fx-background-color: #1e242f;
+    -fx-text-fill: #e6e6e6;
+    -fx-prompt-text-fill: #7a7a7a;
+    -fx-border-color: #2a3344;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+
+.login-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-background-color: #222a38;
+}
+
+.login-btn {
+    -fx-background-color: linear-gradient(to right, #00b09b, #96c93d);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 30;
+    -fx-background-radius: 10;
+}
+
+.login-btn:hover {
+    -fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* === 🔍 Search Field === */
+.text-field {
+    -fx-background-color: #1e242f;
+    -fx-text-fill: #e6e6e6;
+    -fx-prompt-text-fill: #7a7a7a;
+    -fx-border-color: #2a3344;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-background-color: #222a38;
+}
+
+/* === 📊 Charts === */
+.chart-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.chart-pie-label {
+    -fx-text-fill: #cccccc;
+}
+
+/* === Alerts === */
+.dialog-pane {
+    -fx-background-color: #1a202c;
+    -fx-border-color: #2a3344;
+    -fx-border-radius: 10;
+}
+.dialog-pane .label {
+    -fx-text-fill: #ffffff;
+}
+
+/* === Transitions === */
+* {
+    -fx-transition: all 0.25s ease-in-out;
+}
+
+/* === 🧭 LOGIN PAGE STYLING === */
+
+.login-pane {
+    -fx-background-color: linear-gradient(to bottom right, #121820, #1b2432);
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0.3, 0, 2);
+    -fx-alignment: center;
+}
+
+.login-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-padding: 0 0 10 0;
+}
+
+.login-field {
+    -fx-background-color: #1e242f;
+    -fx-text-fill: #e6e6e6;
+    -fx-prompt-text-fill: #8a8a8a;
+    -fx-border-color: #2a3344;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+}
+
+.login-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-background-color: #222a38;
+    -fx-effect: dropshadow(gaussian, rgba(0,102,255,0.4), 8, 0.3, 0, 2);
+}
+
+.login-btn {
+    -fx-background-color: linear-gradient(to right, #00b09b, #96c93d);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 30;
+    -fx-background-radius: 10;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.login-btn:hover {
+    -fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.secondary-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #3b82f6;
+    -fx-text-fill: #3b82f6;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 10 25;
+    -fx-font-weight: bold;
+}
+
+.secondary-btn:hover {
+    -fx-background-color: #3b82f633;
+    -fx-text-fill: white;
+}
+
+/* === Smooth Animations === */
+* {
+    -fx-transition: all 0.25s ease-in-out;
+}
+/* === 📊 CHART VISIBILITY FIX (for dark mode) === */
+
+/* LineChart & Axis Labels */
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.axis-label {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.axis-tick-mark {
+    -fx-stroke: #777;
+}
+
+.axis-tick-label {
+    -fx-text-fill: #a5a5a5;
+}
+
+/* Line colors & strokes */
+.default-color0.chart-series-line {
+    -fx-stroke: #00bcd4;
+}
+.default-color1.chart-series-line {
+    -fx-stroke: #ff9800;
+}
+.default-color2.chart-series-line {
+    -fx-stroke: #4caf50;
+}
+.default-color3.chart-series-line {
+    -fx-stroke: #e91e63;
+}
+
+/* Data points (nodes) */
+.chart-line-symbol {
+    -fx-background-color: #00bcd4, white;
+    -fx-background-radius: 5px;
+}
+
+/* === 🥧 PIE CHART COLORS === */
+.chart-pie-label {
+    -fx-fill: #eaeaea;
+    -fx-font-weight: bold;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+}
+
+.chart-legend-item-symbol {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+/* Custom Pie Colors */
+.default-color0.chart-pie { -fx-pie-color: #42a5f5; }
+.default-color1.chart-pie { -fx-pie-color: #66bb6a; }
+.default-color2.chart-pie { -fx-pie-color: #ffca28; }
+.default-color3.chart-pie { -fx-pie-color: #ef5350; }
+.default-color4.chart-pie { -fx-pie-color: #ab47bc; }
+.chart-line-symbol {
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-effect: dropshadow(gaussian, rgba(0,255,255,0.3), 8, 0.3, 0, 2);
+    -fx-background-color: #00e5ff, white;
+    -fx-background-radius: 4px;
+}
+
+.chart-pie {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.2), 8, 0.3, 0, 1);
+}

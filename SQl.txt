@@ -1,0 +1,109 @@
+-- -----------------------------------------------------
+-- DATABASE INITIALIZATION SCRIPT FOR STOCKFX
+-- -----------------------------------------------------
+
+-- Drop database if it already exists
+DROP DATABASE IF EXISTS stockup_db;
+
+-- Create new database
+CREATE DATABASE stockup_db;
+
+-- Use the database
+USE stockup_db;
+
+-- -----------------------------------------------------
+-- TABLE: users (for login/auth)
+-- -----------------------------------------------------
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- -----------------------------------------------------
+-- TABLE: stocks (company list)
+-- -----------------------------------------------------
+CREATE TABLE stocks (
+    stock_id INT AUTO_INCREMENT PRIMARY KEY,
+    stock_name VARCHAR(100) NOT NULL,
+    symbol VARCHAR(10) NOT NULL UNIQUE,
+    price DECIMAL(10,2) NOT NULL,
+    change_percent DECIMAL(5,2) DEFAULT 0.00,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- -----------------------------------------------------
+-- TABLE: portfolio (user’s stock holdings)
+-- -----------------------------------------------------
+CREATE TABLE portfolio (
+    portfolio_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    stock_id INT NOT NULL,
+    quantity INT NOT NULL,
+    avg_price DECIMAL(10,2) NOT NULL,
+    total_value DECIMAL(12,2) GENERATED ALWAYS AS (quantity * avg_price) STORED,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (stock_id) REFERENCES stocks(stock_id) ON DELETE CASCADE
+);
+
+-- -----------------------------------------------------
+-- TABLE: transactions (buy/sell history)
+-- -----------------------------------------------------
+CREATE TABLE transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    stock_id INT NOT NULL,
+    transaction_type ENUM('BUY','SELL') NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (stock_id) REFERENCES stocks(stock_id)
+);
+
+-- -----------------------------------------------------
+-- SAMPLE DATA
+-- -----------------------------------------------------
+INSERT INTO users (username, password, email)
+VALUES 
+('admin', 'admin123', 'admin@stockfx.com');
+
+INSERT INTO stocks (stock_name, symbol, price, change_percent)
+VALUES
+('Apple Inc.', 'AAPL', 190.50, 1.25),
+('Tesla Inc.', 'TSLA', 234.80, -0.65),
+('Amazon.com', 'AMZN', 153.40, 0.45),
+('NVIDIA Corp.', 'NVDA', 492.70, 2.80);
+
+INSERT INTO portfolio (user_id, stock_id, quantity, avg_price)
+VALUES 
+(1, 1, 10, 180.00),
+(1, 2, 5, 210.00);
+
+INSERT INTO transactions (user_id, stock_id, transaction_type, quantity, price)
+VALUES
+(1, 1, 'BUY', 10, 180.00),
+(1, 2, 'BUY', 5, 210.00);
+
+-- -----------------------------------------------------
+-- VIEW: portfolio_summary
+-- -----------------------------------------------------
+CREATE VIEW portfolio_summary AS
+SELECT 
+    u.username,
+    s.stock_name,
+    s.symbol,
+    p.quantity,
+    p.avg_price,
+    s.price AS current_price,
+    (s.price - p.avg_price) * p.quantity AS profit_loss,
+    p.total_value
+FROM portfolio p
+JOIN users u ON u.user_id = p.user_id
+JOIN stocks s ON s.stock_id = p.stock_id;
+
+-- -----------------------------------------------------
+-- DONE
+-- -----------------------------------------------------

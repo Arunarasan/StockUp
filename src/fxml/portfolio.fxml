@@ -1,0 +1,18 @@
+<Tab text="Portfolio">
+    <AnchorPane>
+        <children>
+            <TableView fx:id="tblPortfolio" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colPSymbol" text="Symbol" prefWidth="100"/>
+                    <TableColumn fx:id="colPCompany" text="Company" prefWidth="200"/>
+                    <TableColumn fx:id="colPQty" text="Qty" prefWidth="80"/>
+                    <TableColumn fx:id="colPAvg" text="Avg Price" prefWidth="120"/>
+                    <TableColumn fx:id="colPValue" text="Current Value" prefWidth="150"/>
+                </columns>
+            </TableView>
+
+            <PieChart fx:id="piePortfolio" prefHeight="250" prefWidth="400" 
+                      AnchorPane.topAnchor="320" AnchorPane.leftAnchor="10"/>
+        </children>
+    </AnchorPane>
+</Tab>

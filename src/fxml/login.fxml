@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.controllers.LoginController"
+      spacing="15"
+      alignment="CENTER"
+      prefWidth="400"
+      prefHeight="420"
+      stylesheets="@../styles/app.css"
+      styleClass="login-pane">
+
+    <children>
+        <!-- 🌟 Title -->
+        <Label text="📈 StockUP"
+               styleClass="login-title"
+               effect="$shadow"/>
+
+        <!-- 🧑 Username -->
+        <TextField fx:id="txtUser"
+                   promptText="Username"
+                   styleClass="login-field"/>
+
+        <!-- 🔒 Password -->
+        <PasswordField fx:id="txtPass"
+                       promptText="Password"
+                       styleClass="login-field"/>
+
+        <!-- 🔘 Buttons -->
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Button fx:id="btnLogin"
+                        text="Login"
+                        onAction="#onLogin"
+                        styleClass="login-btn"/>
+                <Button fx:id="btnSignup"
+                        text="Signup"
+                        onAction="#onSignup"
+                        styleClass="secondary-btn"/>
+            </children>
+        </HBox>
+    </children>
+
+    <padding>
+        <Insets top="40" right="50" bottom="40" left="50"/>
+    </padding>
+
+    <effect>
+        <DropShadow radius="15" color="#00000080"/>
+    </effect>
+</VBox>
